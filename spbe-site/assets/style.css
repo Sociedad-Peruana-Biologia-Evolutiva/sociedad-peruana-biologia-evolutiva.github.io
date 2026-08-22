@@ -1,0 +1,368 @@
+/* =========================================================
+   SPBE — Sociedad Peruana de Biología Evolutiva
+   Design tokens: three regions of Peru as one motif —
+   Costa (sea deep blue) · Sierra (Andes brown/gold) · Selva (rainforest green)
+   ========================================================= */
+
+:root {
+  /* Color: named after what they represent, not generic swatch names */
+  --sea-deep:     #0E3A4C;  /* Pacific at dusk — dark backgrounds, header */
+  --sea-mid:      #1D6480;  /* shallow coastal water — links, secondary accents */
+  --forest:       #2E5339;  /* rainforest canopy — primary actions, headings */
+  --forest-light: #7A9257;  /* cloud-forest moss — tags, hovers */
+  --andes-brown:  #6B4226;  /* high-Andes soil — borders, rules */
+  --gold:         #C6952F;  /* Inca gold — sparing highlight only */
+  --sand:         #F1E7D3;  /* altiplano paper — page background */
+  --sand-deep:    #E4D5B7;  /* card background, slightly deeper sand */
+  --ink:          #241F1A;  /* warm near-black — body text */
+
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --max-w: 1080px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--sand);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  font-size: 17px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--sea-deep);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 500; }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h3 { font-size: 1.15rem; color: var(--forest); }
+
+p { margin: 0 0 1em; max-width: 62ch; }
+
+a { color: var(--sea-mid); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+a:hover { color: var(--forest); }
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  background: var(--sea-deep);
+  color: var(--sand);
+  padding: 1.1rem 0;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--sand);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+}
+.brand:hover { color: var(--gold); }
+
+.brand-mark {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+nav.site-nav { display: flex; gap: 1.4rem; align-items: center; }
+nav.site-nav a {
+  color: var(--sand);
+  opacity: 0.88;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+nav.site-nav a:hover, nav.site-nav a.active {
+  opacity: 1;
+  border-color: var(--gold);
+  color: var(--sand);
+}
+
+#lang-toggle {
+  background: transparent;
+  border: 1.5px solid rgba(241,231,211,0.5);
+  color: var(--sand);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+#lang-toggle:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ---------- Signature motif: Costa · Sierra · Selva band ---------- */
+
+.region-band {
+  height: 10px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--sea-deep) 0%, var(--sea-deep) 30%,
+    var(--andes-brown) 30%, var(--gold) 50%,
+    var(--forest) 50%, var(--forest-light) 100%
+  );
+}
+
+.region-band.thin { height: 5px; }
+
+.region-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--andes-brown);
+  opacity: 0.75;
+  padding: 0.35rem 0.1rem 0;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 4.5rem 0 3rem;
+}
+
+.hero .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--forest);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--forest);
+}
+
+.hero .lead {
+  font-size: 1.2rem;
+  max-width: 60ch;
+  color: var(--ink);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.8rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+
+.btn-primary { background: var(--forest); color: var(--sand); }
+.btn-primary:hover { background: #24422c; color: var(--sand); }
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--sea-deep);
+  color: var(--sea-deep);
+}
+.btn-outline:hover { background: var(--sea-deep); color: var(--sand); }
+
+/* ---------- Sections ---------- */
+
+section { padding: 3rem 0; }
+
+.section-alt {
+  background: var(--sand-deep);
+  border-top: 1px solid rgba(107,66,38,0.15);
+  border-bottom: 1px solid rgba(107,66,38,0.15);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid rgba(107,66,38,0.18);
+  border-radius: 10px;
+  padding: 1.4rem 1.5rem;
+}
+
+/* ---------- Directory ---------- */
+
+.dir-controls {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 2rem;
+}
+
+.dir-controls input, .dir-controls select {
+  font-family: var(--font-body);
+  padding: 0.55rem 0.8rem;
+  border: 1.5px solid var(--andes-brown);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+
+.dir-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.1rem;
+}
+
+.researcher-card {
+  background: #fff;
+  border: 1px solid rgba(107,66,38,0.2);
+  border-left: 4px solid var(--forest);
+  border-radius: 8px;
+  padding: 1.1rem 1.2rem;
+}
+
+.researcher-card h3 { margin-bottom: 0.15rem; }
+
+.researcher-card .inst {
+  font-size: 0.88rem;
+  color: var(--andes-brown);
+  margin-bottom: 0.6rem;
+}
+
+.researcher-card .taxa {
+  font-family: var(--font-mono);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--forest);
+  background: rgba(122,146,87,0.15);
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin: 0.15rem 0.3rem 0.15rem 0;
+}
+
+.researcher-card .region-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sea-mid);
+}
+
+.researcher-card .links a {
+  font-size: 0.85rem;
+  margin-right: 0.8rem;
+}
+
+.empty-state, .error-state {
+  border: 1.5px dashed var(--andes-brown);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  color: var(--andes-brown);
+}
+
+/* ---------- Steps (join page) ---------- */
+
+.steps {
+  counter-reset: step;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.steps li {
+  position: relative;
+  padding-left: 3rem;
+  background: #fff;
+  border: 1px solid rgba(107,66,38,0.18);
+  border-radius: 8px;
+  padding: 1rem 1.3rem 1rem 3rem;
+}
+
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0.9rem;
+  top: 1rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--forest);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  background: var(--sea-deep);
+  color: var(--sand);
+  padding: 2.2rem 0;
+  margin-top: 2rem;
+}
+footer a { color: var(--gold); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.88rem; opacity: 0.9; }
+
+/* ---------- Utility: language visibility ---------- */
+
+[data-lang="en"] { display: none; }
+html[lang="en"] [data-lang="es"] { display: none; }
+html[lang="en"] [data-lang="en"] { display: initial; }

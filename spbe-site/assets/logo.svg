@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="SPBE">
+  <circle cx="24" cy="24" r="23" fill="#0E3A4C" stroke="#C6952F" stroke-width="1"/>
+  <!-- sea -->
+  <path d="M2 32 Q 12 28 24 32 T 46 32 V44 H2 Z" fill="#1D6480"/>
+  <!-- andes peak -->
+  <path d="M10 32 L18 16 L24 24 L30 12 L38 32 Z" fill="#6B4226"/>
+  <path d="M18 16 L20.5 20 L15.5 20 Z" fill="#F1E7D3"/>
+  <path d="M30 12 L32.5 16 L27.5 16 Z" fill="#F1E7D3"/>
+  <!-- canopy -->
+  <path d="M2 34 Q10 24 18 34 Q26 22 34 34 Q40 26 46 34 V44 H2 Z" fill="#2E5339"/>
+</svg>

@@ -36,6 +36,7 @@ Abre `data/researchers.json` y agrega un objeto con esta forma:
 {
   "name": "María Quispe",
   "institution": "Universidad Nacional Mayor de San Marcos",
+  "country": "Perú",
   "region": "Sierra",
   "taxa": ["Bombus", "Polinizadores andinos"],
   "interests_es": "Biogeografía y especiación en abejorros de altura",
@@ -48,8 +49,17 @@ Abre `data/researchers.json` y agrega un objeto con esta forma:
 
 Notas:
 
+- `country` debe coincidir **exactamente** (mismo texto, con tilde) con una
+  de las claves de `assets/countries.js` — de eso depende que aparezca en
+  el mapa. Si viene del formulario, ya está garantizado porque el
+  desplegable usa la misma lista. Si alguien pide un país que no está en la
+  lista, agrégalo en `assets/countries.js` (con sus coordenadas
+  aproximadas) **y** en las opciones del dropdown `country` en
+  `.github/ISSUE_TEMPLATE/nuevo_investigador.yml`, usando el mismo texto en
+  ambos lugares.
 - `region` debe ser exactamente `"Costa"`, `"Sierra"` o `"Amazonía"` (así
-  funciona el filtro del directorio).
+  funciona el filtro del directorio), o puede omitirse para quienes no
+  trabajan en el Perú.
 - `taxa` y `links` pueden ir vacíos (`[]`) si la persona no los especificó.
 - `interests_en` es opcional; si se omite, el texto en español se usa como
   respaldo.

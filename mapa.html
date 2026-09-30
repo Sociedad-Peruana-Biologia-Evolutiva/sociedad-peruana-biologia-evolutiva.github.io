@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa — SPBE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/logo.svg" alt="">
+      <span>SPBE</span>
+    </a>
+    <nav class="site-nav">
+      <a href="index.html" data-lang="es">Inicio</a>
+      <a href="index.html" data-lang="en">Home</a>
+      <a href="directorio.html" data-lang="es">Directorio</a>
+      <a href="directorio.html" data-lang="en">Directory</a>
+      <a href="mapa.html" class="active" data-lang="es">Mapa</a>
+      <a href="mapa.html" class="active" data-lang="en">Map</a>
+      <a href="unirse.html" data-lang="es">Súmate</a>
+      <a href="unirse.html" data-lang="en">Join</a>
+      <button id="lang-toggle" type="button">EN</button>
+    </nav>
+  </div>
+</header>
+<div class="region-band"></div>
+
+<main>
+  <section>
+    <div class="wrap">
+      <h1 data-lang="es">Mapa de la comunidad</h1>
+      <h1 data-lang="en">Community map</h1>
+      <p data-lang="es">Somos investigadores peruanos trabajando desde el Perú y desde todo el mundo. Cada punto es una persona del <a href="directorio.html">directorio</a>.</p>
+      <p data-lang="en">We're Peruvian researchers working from Peru and from all over the world. Each pin is a person from the <a href="directorio.html">directory</a>.</p>
+
+      <div id="map-sample-notice" class="empty-state" style="display:none; margin-bottom:1.5rem;">
+        <span data-lang="es">Aún no hay <code>data/researchers.json</code> publicado — estás viendo perfiles de ejemplo repartidos por el mundo. Súmate para ser el primer punto real.</span>
+        <span data-lang="en">No <code>data/researchers.json</code> published yet — you're seeing sample profiles scattered around the world. Join to be the first real pin.</span>
+      </div>
+
+      <div id="map"></div>
+
+      <p style="margin-top:1rem; font-size:0.85rem; color:var(--andes-brown)" data-lang="es">
+        Los puntos se ubican por país (no por dirección exacta), a partir del campo "país" del formulario. ¿Tu país no aparece en el mapa? <a href="unirse.html">Escríbenos al sumarte</a> y lo agregamos.
+      </p>
+      <p style="margin-top:1rem; font-size:0.85rem; color:var(--andes-brown)" data-lang="en">
+        Pins are placed by country (not exact address), based on the "country" field in the form. Country missing from the map? <a href="unirse.html">Let us know when you join</a> and we'll add it.
+      </p>
+    </div>
+  </section>
+</main>
+
+<div class="region-band thin"></div>
+<footer>
+  <div class="wrap">
+    <span data-lang="es">SPBE — un proyecto comunitario, en construcción.</span>
+    <span data-lang="en">SPBE — a community project, under construction.</span>
+    <a data-repo-link href="#" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="assets/countries.js"></script>
+<script src="assets/directory-data.js"></script>
+<script src="assets/main.js"></script>
+<script src="assets/map.js"></script>
+</body>
+</html>

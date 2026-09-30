@@ -8,7 +8,7 @@
 
 // >>> EDIT ME: set this to "your-github-username/your-repo-name" once you
 // create the repository. It builds the "add yourself" issue-form link.
-const REPO = "YOUR-USERNAME/spbe-site";
+const REPO = "CaroSegami/Sociedad-Peruana-de-Biologia-Evolutiva";
 
 /* ---------------- Language toggle ---------------- */
 
@@ -54,48 +54,10 @@ const REPO = "YOUR-USERNAME/spbe-site";
   }
 })();
 
-/* ---------------- Directory rendering ---------------- */
-
-const SAMPLE_RESEARCHERS = [
-  {
-    name: "Ejemplo: María Quispe",
-    institution: "Universidad Nacional Mayor de San Marcos",
-    region: "Sierra",
-    taxa: ["Bombus", "Polinizadores andinos"],
-    interests_es: "Biogeografía y especiación en abejorros de altura",
-    interests_en: "Biogeography and speciation in high-altitude bumblebees",
-    links: [{ label: "Perfil", url: "#" }]
-  },
-  {
-    name: "Ejemplo: Diego Farfán",
-    institution: "Universidad Peruana Cayetano Heredia",
-    region: "Amazonía",
-    taxa: ["Dendrobatidae"],
-    interests_es: "Filogeografía de ranas venenosas amazónicas",
-    interests_en: "Phylogeography of Amazonian poison frogs",
-    links: [{ label: "Google Scholar", url: "#" }]
-  },
-  {
-    name: "Ejemplo: Lucía Osorio",
-    institution: "Universidad Científica del Sur",
-    region: "Costa",
-    taxa: ["Otariidae", "Mamíferos marinos"],
-    interests_es: "Genómica de conservación de lobos marinos",
-    interests_en: "Conservation genomics of coastal sea lions",
-    links: [{ label: "Web", url: "#" }]
-  }
-];
-
-async function loadResearchers() {
-  try {
-    const res = await fetch("data/researchers.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("no data file yet");
-    const data = await res.json();
-    return { data, isSample: data.length === 0 ? true : false, usedSample: false };
-  } catch (e) {
-    return { data: SAMPLE_RESEARCHERS, isSample: true, usedSample: true };
-  }
-}
+/* ---------------- Directory rendering ----------------
+   SAMPLE_RESEARCHERS and loadResearchers() live in
+   assets/directory-data.js, loaded before this file on
+   directorio.html. */
 
 function renderCard(r) {
   const taxa = (r.taxa || [])
@@ -111,7 +73,7 @@ function renderCard(r) {
     <article class="researcher-card">
       <h3>${escapeHTML(r.name)}</h3>
       <div class="inst">${escapeHTML(r.institution || "")}</div>
-      <div class="region-tag">${escapeHTML(r.region || "")}</div>
+      <div class="region-tag">${escapeHTML(r.country || "")}${r.region ? " · " + escapeHTML(r.region) : ""}</div>
       <p data-lang="es" style="margin-top:0.5rem">${escapeHTML(interestsEs)}</p>
       <p data-lang="en" style="margin-top:0.5rem">${escapeHTML(interestsEn)}</p>
       <div>${taxa}</div>

@@ -10,15 +10,19 @@ para publicarse gratis con **GitHub Pages**.
 ## Estructura
 
 ```
-index.html            → página principal (quiénes somos / qué queremos construir)
-directorio.html        → directorio de investigadores (buscable, filtrable)
-unirse.html            → instrucciones para sumarse al directorio
-assets/style.css       → paleta y tipografía
-assets/main.js         → toggle de idioma + renderizado del directorio
-assets/logo.svg        → marca (costa · Andes · selva)
-data/researchers.json  → datos del directorio (empieza vacío: [])
+index.html               → página principal (quiénes somos / qué queremos construir)
+directorio.html          → directorio de investigadores (buscable, filtrable)
+mapa.html                → mapa mundial con un punto por investigador (por país)
+unirse.html               → instrucciones para sumarse al directorio
+assets/style.css         → paleta y tipografía
+assets/main.js            → toggle de idioma + renderizado del directorio
+assets/map.js             → lógica del mapa (Leaflet)
+assets/countries.js       → coordenadas de cada país (para el mapa)
+assets/directory-data.js  → datos de ejemplo + carga de data/researchers.json
+assets/logo.svg           → marca (costa · Andes · selva)
+data/researchers.json     → datos del directorio (empieza vacío: [])
 .github/ISSUE_TEMPLATE/nuevo_investigador.yml → formulario de alta (sin código)
-CONTRIBUTING.md        → cómo revisar y publicar una solicitud nueva
+CONTRIBUTING.md           → cómo revisar y publicar una solicitud nueva
 ```
 
 ## Puesta en marcha (una sola vez)
@@ -70,6 +74,7 @@ y visitar `http://localhost:8000`.
 
 ## Próximos pasos posibles
 
-- Añadir un mapa del Perú con la ubicación de cada investigador.
 - Exportar el directorio a CSV para análisis.
 - Migrar a una sociedad formal con membresía, boletín, y eventos.
+- Agregar más países al mapa a medida que se sumen investigadores (ver
+  nota sobre `assets/countries.js` en [`CONTRIBUTING.md`](CONTRIBUTING.md)).

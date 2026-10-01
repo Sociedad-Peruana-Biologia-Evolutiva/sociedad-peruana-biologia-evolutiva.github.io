@@ -45,6 +45,7 @@ const REPO = "Sociedad-Peruana-Biologia-Evolutiva/sociedad-peruana-biologia-evol
       countryDefault.textContent = lang === "es"
         ? countryDefault.dataset.labelEs
         : countryDefault.dataset.labelEn;
+      }
     }
 
   function updateToggleLabel(btn, lang) {

@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "name": "J. Carolina Segami",
+    "institution": "Duke University",
+    "country": "Estados Unidos",
+    "region": "",
+    "taxa": ["Microcebus", "Ficedula", "Oophaga pumilio"],
+    "interests_es": "Especiación, genómica poblacional, historia de vida",
+    "interests_en": "Speciation, population genomics, life history",
+    "links": [
+      { "label": "ORCID", "url": "https://orcid.org/0000-0002-9885-1537" },
+      { "label": "Email", "url": "mailto:carolina.segami@duke.edu" },
+      { "label": "Web", "url": "https://carosegami.github.io/" }
+    ]
+  }
+]

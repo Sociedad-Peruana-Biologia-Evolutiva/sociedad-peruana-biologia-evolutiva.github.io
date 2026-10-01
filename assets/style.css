@@ -359,6 +359,14 @@ section { padding: 3rem 0; }
   border: 1px solid rgba(107,66,38,0.25);
   margin-top: 1.5rem;
   background: var(--sand-deep);
+  overflow: hidden;
+}
+
+/* Tint the raw OpenStreetMap tiles toward the site's warm sand/forest
+   palette instead of their default blue/green. Markers and popups sit in
+   a different pane, so they're unaffected. */
+#map .leaflet-tile-pane {
+  filter: sepia(25%) saturate(65%) brightness(1.04) hue-rotate(-6deg);
 }
 
 .spbe-pin span {

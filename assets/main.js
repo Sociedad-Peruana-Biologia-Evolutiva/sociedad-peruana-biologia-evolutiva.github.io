@@ -40,13 +40,12 @@ const REPO = "Sociedad-Peruana-Biologia-Evolutiva/sociedad-peruana-biologia-evol
         ? search.dataset.placeholderEs
         : search.dataset.placeholderEn;
     }
-    const regionDefault = document.querySelector("#dir-region option[value='']");
-    if (regionDefault) {
-      regionDefault.textContent = lang === "es"
-        ? regionDefault.dataset.labelEs
-        : regionDefault.dataset.labelEn;
+        const countryDefault = document.querySelector("#dir-country option[value='']");
+    if (countryDefault) {
+      countryDefault.textContent = lang === "es"
+        ? countryDefault.dataset.labelEs
+        : countryDefault.dataset.labelEn;
     }
-  }
 
   function updateToggleLabel(btn, lang) {
     btn.textContent = lang === "es" ? "EN" : "ES";
@@ -106,14 +105,26 @@ async function initDirectory() {
          <div class="empty-state" data-lang="en">No results. Try another filter.</div>`;
   }
 
-  draw(current);
+    draw(current);
 
   const search = document.getElementById("dir-search");
-  const regionFilter = document.getElementById("dir-region");
+  const countryFilter = document.getElementById("dir-country");
+
+  if (countryFilter) {
+    const countries = [...new Set(current.map((r) => r.country).filter(Boolean))].sort(
+      (a, b) => a.localeCompare(b, "es")
+    );
+    countries.forEach((c) => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      countryFilter.appendChild(opt);
+    });
+  }
 
   function applyFilters() {
     const q = (search?.value || "").toLowerCase().trim();
-    const region = regionFilter?.value || "";
+    const country = countryFilter?.value || "";
     const filtered = current.filter((r) => {
       const matchesQ =
         !q ||
@@ -122,15 +133,16 @@ async function initDirectory() {
         (r.taxa || []).join(" ").toLowerCase().includes(q) ||
         (r.interests_es || "").toLowerCase().includes(q) ||
         (r.interests_en || "").toLowerCase().includes(q);
-      const matchesRegion = !region || r.region === region;
-      return matchesQ && matchesRegion;
+      const matchesCountry = !country || r.country === country;
+      return matchesQ && matchesCountry;
     });
     draw(filtered);
   }
 
   search?.addEventListener("input", applyFilters);
-  regionFilter?.addEventListener("change", applyFilters);
+  countryFilter?.addEventListener("change", applyFilters);
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   initDirectory();

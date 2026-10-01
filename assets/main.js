@@ -8,7 +8,7 @@
 
 // >>> EDIT ME: set this to "your-github-username/your-repo-name" once you
 // create the repository. It builds the "add yourself" issue-form link.
-const REPO = "CaroSegami/Sociedad-Peruana-de-Biologia-Evolutiva";
+const REPO = "Sociedad-Peruana-Biologia-Evolutiva/sociedad-peruana-biologia-evolutiva.github.io";
 
 /* ---------------- Language toggle ---------------- */
 

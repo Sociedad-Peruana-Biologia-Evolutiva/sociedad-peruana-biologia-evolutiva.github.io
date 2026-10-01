@@ -12,11 +12,14 @@ async function initMap() {
 
   const map = L.map("map", { scrollWheelZoom: false, minZoom: 2 }).setView([10, -30], 2);
 
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+   // Standard OpenStreetMap tiles — free, no API key required.
+  // (CARTO's free basemap tiles started requiring a key in Aug 2026; a CSS
+  // filter on #map in style.css tints these to match the site palette.)
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
-    maxZoom: 18,
-    subdomains: "abcd"
+      '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+    maxZoom: 19,
+    subdomains: "abc"
   }).addTo(map);
 
   const { data, usedSample } = await loadResearchers();

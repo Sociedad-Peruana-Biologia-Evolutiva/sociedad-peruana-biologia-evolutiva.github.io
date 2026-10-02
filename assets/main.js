@@ -73,7 +73,7 @@ function renderCard(r) {
     <article class="researcher-card">
       <h3>${escapeHTML(r.name)}</h3>
       <div class="inst">${escapeHTML(r.institution || "")}</div>
-      <div class="region-tag">${escapeHTML(r.country || "")}${r.region ? " · " + escapeHTML(r.region) : ""}</div>
+      <div class="region-tag">${escapeHTML(r.city ? `${r.city}, ${r.country || ""}` : r.country || "")}${r.region ? " · " + escapeHTML(r.region) : ""}</div>
       <p data-lang="es" style="margin-top:0.5rem">${escapeHTML(interestsEs)}</p>
       <p data-lang="en" style="margin-top:0.5rem">${escapeHTML(interestsEn)}</p>
       <div>${taxa}</div>

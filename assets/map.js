@@ -35,24 +35,27 @@ async function initMap() {
 
   // Spread out multiple pins that land in the same country so they
   // don't sit exactly on top of each other.
-  const countByCountry = {};
+    const seenSpots = {};
   const bounds = [];
 
   data.forEach((r) => {
-    const base = COUNTRY_COORDS[r.country];
+    const hasExact = typeof r.lat === "number" && typeof r.lng === "number";
+    const base = hasExact ? [r.lat, r.lng] : COUNTRY_COORDS[r.country];
     if (!base) return;
 
-    const n = (countByCountry[r.country] = (countByCountry[r.country] || 0) + 1);
+    const spotKey = `${base[0].toFixed(2)},${base[1].toFixed(2)}`;
+    const n = (seenSpots[spotKey] = (seenSpots[spotKey] || 0) + 1);
     const angle = n * 47 * (Math.PI / 180);
-    const radius = n === 1 ? 0 : 0.7 * Math.sqrt(n);
+    const radius = n === 1 ? 0 : (hasExact ? 0.08 : 0.7) * Math.sqrt(n);
     const lat = base[0] + radius * Math.sin(angle);
     const lon = base[1] + radius * Math.cos(angle);
 
     const taxa = (r.taxa || []).join(", ");
+    const place = r.city ? `${r.city}, ${r.country}` : r.country || "";
     const popupHTML = `
       <strong>${escapeHTML(r.name)}</strong><br>
       <span class="map-popup-inst">${escapeHTML(r.institution || "")}</span><br>
-      <span class="map-popup-country">${escapeHTML(r.country || "")}</span>
+      <span class="map-popup-country">${escapeHTML(place)}</span>
       ${taxa ? `<br><em>${escapeHTML(taxa)}</em>` : ""}
     `;
 

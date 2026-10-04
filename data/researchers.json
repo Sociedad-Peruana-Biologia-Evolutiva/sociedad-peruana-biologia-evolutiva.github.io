@@ -17,3 +17,22 @@
     ]
   }
 ]
+[
+  {
+    "name": "Ken S. Toyama",
+    "institution": "Mammal Research Institute, Polish Academy of Sciences",
+    "country": "Polonia",
+    "city": "Białowieża",
+    "lat": 52.7007,
+    "lng": 23.8664,
+    "region": "",
+    "taxa": ["Anolis", "Liolaemus", "Microlophus"],
+    "interests_es": "alometría, dimorfismo sexual, ecomorfología, macroevolución",
+    "interests_en": "allometry, sexual dimorphism, ecomorphology, macroevolution",
+    "links": [
+      { "label": "ORCID", "url": "https://orcid.org/0000-0002-8331-4894" },
+      { "label": "Email", "url": "mailto:ken.toyama7@gmail.com" },
+      { "label": "Web", "url": "https://kenstoyama.wordpress.com/about-me/" }
+    ]
+  }
+]
